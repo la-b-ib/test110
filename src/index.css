@@ -1,0 +1,459 @@
+@import "tailwindcss";
+
+@theme {
+  /* Flat UI Colors GB Palette (British Palette) Explicit Colors */
+  --color-gb-pico: #192a56;
+  --color-gb-mazarine: #273c75;
+  --color-gb-electromagnetic: #2f3640;
+  --color-gb-bluerise: #353b48;
+  --color-gb-protoss: #44bd32;
+  --color-gb-vanadyl: #44bd32;
+  --color-gb-periwinkle: #9c88ff;
+  --color-gb-mattpurple: #8c7ae6;
+  --color-gb-risenshine: #fbc531;
+  --color-gb-gold: #e1b12c;
+  --color-gb-skirret: #44bd32;
+  --color-gb-elf: #4cd137;
+  --color-gb-seabrook: #487eb0;
+  --color-gb-naval: #40739e;
+  --color-gb-nasturcian: #e84118;
+  --color-gb-harley: #c23616;
+  --color-gb-lynx: #f5f6fa;
+  --color-gb-pensive: #dcdde1;
+  --color-gb-blueberry: #7f8fa6;
+  --color-gb-chaingang: #718093;
+
+  /* Global Color Scale Overrides -> GB Palette Accent #44bd32 */
+  --color-slate-950: #080a0f;
+  --color-slate-900: #0d1017;
+  --color-slate-800: #161a23;
+  --color-slate-700: #2f3640; /* GB Electromagnetic */
+  --color-slate-600: #353b48; /* GB Blue Rise */
+  --color-slate-500: #487eb0; /* GB Seabrook */
+  --color-slate-400: #7f8fa6; /* GB Blueberry Soda */
+  --color-slate-300: #dcdde1; /* GB Pensive Color */
+  --color-slate-200: #dcdde1;
+  --color-slate-100: #f5f6fa; /* GB Lynx White */
+
+  --color-teal-600: #3ea02a;
+  --color-teal-500: #44bd32;
+  --color-teal-400: #44bd32;
+  --color-teal-300: #4cd137;
+
+  --color-cyan-600: #3ea02a;
+  --color-cyan-500: #44bd32;
+  --color-cyan-400: #44bd32;
+  --color-cyan-300: #4cd137;
+
+  --color-amber-600: #e1b12c;
+  --color-amber-500: #fbc531;
+  --color-amber-400: #fbc531;
+  --color-amber-300: #e1b12c;
+
+  --color-emerald-600: #44bd32;
+  --color-emerald-500: #44bd32;
+  --color-emerald-400: #4cd137;
+
+  --color-purple-600: #8c7ae6;
+  --color-purple-500: #9c88ff;
+  --color-purple-400: #9c88ff;
+  --color-purple-300: #8c7ae6;
+
+  --color-rose-600: #c23616;
+  --color-rose-500: #e84118;
+  --color-rose-400: #e84118;
+  --color-rose-300: #c23616;
+}
+
+@layer base {
+  :root {
+    --font-code: 'Source Code Pro', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+
+    /* GB Palette CSS Variables */
+    --gb-pico: #192a56;
+    --gb-mazarine: #273c75;
+    --gb-electromagnetic: #2f3640;
+    --gb-bluerise: #353b48;
+    --gb-protoss: #00a8ff;
+    --gb-vanadyl: #0097e6;
+    --gb-periwinkle: #9c88ff;
+    --gb-mattpurple: #8c7ae6;
+    --gb-risenshine: #fbc531;
+    --gb-gold: #e1b12c;
+    --gb-skirret: #44bd32;
+    --gb-elf: #4cd137;
+    --gb-seabrook: #487eb0;
+    --gb-naval: #40739e;
+    --gb-nasturcian: #e84118;
+    --gb-harley: #c23616;
+    --gb-lynx: #f5f6fa;
+    --gb-pensive: #dcdde1;
+    --gb-blueberry: #7f8fa6;
+    --gb-chaingang: #718093;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #000000;
+    color: #f5f6fa;
+  }
+}
+
+/* GB Palette Custom Overrides & Container Removal for direct-on-bg layout */
+[class*="bg-[#080a0f]"],
+[class*="bg-[#090b10]"],
+[class*="bg-[#090c14]"],
+[class*="bg-[#06080d]"],
+[class*="bg-[#0b0e17]"],
+[class*="bg-[#0a0d14]"],
+[class*="bg-[#05070c]"] {
+  background-color: #000000 !important;
+}
+
+/* Remove card container background boxes and borders so items sit directly on background */
+section [class*="rounded-xl"].border,
+section [class*="rounded-lg"].border,
+main [class*="rounded-xl"].border,
+main [class*="rounded-lg"].border {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* Ensure modal overlays and popups retain a dark solid background so text remains crisp and readable */
+.fixed [class*="bg-[#0b0e17]"],
+.fixed [class*="rounded-xl"].border,
+.fixed [class*="rounded-lg"].border {
+  background-color: #0a0d15 !important;
+  border-color: #1e293b !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Enforce all Remix Icons to be Remix Icons & strictly 20x20 px */
+i[class^="ri-"],
+i[class*=" ri-"] {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Global h2 Typography Override */
+h2 {
+  font-size: 25px !important;
+  line-height: 1.25 !important;
+}
+
+/* Custom Font Utilities for Source Code Pro Black and JetBrains Mono */
+.font-source-code {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.font-source-code-black {
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 900;
+}
+
+.font-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Responsive Scrollbar Configuration */
+/* Mobile View (<768px): Completely hidden scrollbar */
+@media (max-width: 767px) {
+  html, body, * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+/* Desktop View (>=768px): Custom Thick Short Neobrutalist Cyber Scrollbar */
+@media (min-width: 768px) {
+  html, body, * {
+    scrollbar-width: auto;
+    scrollbar-color: #44bd32 #0d111a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080a0f;
+    border-left: 2px solid #000000;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #44bd32;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    min-height: 80px; /* Short thumb ~1 inch */
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4), 0 0 8px rgba(68, 189, 50, 0.6);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4cd137;
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.6), 0 0 12px rgba(76, 209, 55, 0.9);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #080a0f;
+    border: 2px solid #000000;
+  }
+}
+
+/* Cyber Glow Effects with GB Palette Accent #44bd32 */
+.glow-teal {
+  box-shadow: 0 0 25px -5px rgba(68, 189, 50, 0.5);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(68, 189, 50, 0.5);
+}
+
+.glow-red {
+  box-shadow: 0 0 25px -5px rgba(232, 65, 24, 0.4);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(156, 136, 255, 0.4);
+}
+
+.text-glow-teal {
+  text-shadow: 0 0 12px rgba(68, 189, 50, 0.7);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 12px rgba(68, 189, 50, 0.7);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 12px rgba(232, 65, 24, 0.7);
+}
+
+/* Scanline & CRT Retro Monitor Overlays */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.4) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* CRT Screen CRT Bezel & Vignette Shader */
+.crt-vignette {
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85), inset 0 0 30px rgba(0, 168, 255, 0.15);
+  pointer-events: none;
+}
+
+/* CRT Cathode Tube Screen Flicker */
+@keyframes crtFlicker {
+  0% { opacity: 0.985; }
+  25% { opacity: 1; }
+  50% { opacity: 0.975; }
+  75% { opacity: 1; }
+  100% { opacity: 0.99; }
+}
+
+.animate-crt-flicker {
+  animation: crtFlicker 0.18s infinite;
+}
+
+/* Retro Phosphor Glow Text Styles */
+.retro-green-glow {
+  color: #4cd137;
+  text-shadow: 0 0 6px rgba(76, 209, 55, 0.8), 0 0 15px rgba(76, 209, 55, 0.4);
+}
+
+.retro-amber-glow {
+  color: #fbc531;
+  text-shadow: 0 0 6px rgba(251, 197, 49, 0.8), 0 0 15px rgba(251, 197, 49, 0.4);
+}
+
+.retro-cyan-glow {
+  color: #44bd32;
+  text-shadow: 0 0 6px rgba(68, 189, 50, 0.8), 0 0 15px rgba(68, 189, 50, 0.4);
+}
+
+/* Retro CRT Panel Borders & Bracket Effects */
+.retro-panel-border {
+  border: 1px solid rgba(68, 189, 50, 0.3);
+  box-shadow: 0 0 15px rgba(68, 189, 50, 0.08), inset 0 0 15px rgba(68, 189, 50, 0.05);
+}
+
+.retro-panel-green {
+  border: 1px solid rgba(76, 209, 55, 0.3);
+  box-shadow: 0 0 15px rgba(76, 209, 55, 0.08), inset 0 0 15px rgba(76, 209, 55, 0.05);
+}
+
+.retro-panel-amber {
+  border: 1px solid rgba(251, 197, 49, 0.3);
+  box-shadow: 0 0 15px rgba(251, 197, 49, 0.08), inset 0 0 15px rgba(251, 197, 49, 0.05);
+}
+
+/* Pulsing Status Dot */
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(68, 189, 50, 0.7); }
+  70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 8px rgba(68, 189, 50, 0); }
+  100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(68, 189, 50, 0); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+/* Fade In Animation for Section Switcher */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Code Syntax & Matrix Effects */
+.matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* NEOBRUTALISM BUTTON STYLES & OVERRIDES */
+button:not(.search-result-item),
+.neo-btn,
+[role="button"]:not(.search-result-item) {
+  height: 32px !important;
+  min-height: 32px !important;
+  max-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-weight: 700 !important;
+  border-width: 2px !important;
+  border-radius: 4px !important;
+  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Neobrutalism Button Utility Variants */
+.neo-btn {
+  border: 2px solid #000000 !important;
+  border-radius: 4px !important;
+  font-weight: 800 !important;
+  box-shadow: 3px 3px 0px 0px #44bd32;
+  transition: all 0.12s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px 0px #44bd32;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px #44bd32 !important;
+}
+
+.neo-btn-primary {
+  background-color: #44bd32 !important;
+  color: #020617 !important;
+  border: 2px solid #020617 !important;
+  box-shadow: 3px 3px 0px 0px #000000, 3px 3px 0px 0px #44bd32;
+}
+
+.neo-btn-primary:hover {
+  background-color: #4cd137 !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px 0px #000000;
+}
+
+.neo-btn-primary:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px #000000 !important;
+}
+
+.neo-btn-cyan {
+  background-color: #44bd32 !important;
+  color: #020617 !important;
+  border: 2px solid #020617 !important;
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
+.neo-btn-cyan:hover {
+  background-color: #4cd137 !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px 0px #44bd32;
+}
+
+.neo-btn-cyan:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px #020617 !important;
+}
+
+.neo-btn-amber {
+  background-color: #f59e0b !important;
+  color: #020617 !important;
+  border: 2px solid #020617 !important;
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
+.neo-btn-amber:hover {
+  background-color: #fbbf24 !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px 0px #f59e0b;
+}
+
+.neo-btn-amber:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px #020617 !important;
+}
+
+.neo-btn-dark {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  border: 2px solid #334155 !important;
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
+.neo-btn-dark:hover {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px 0px #38bdf8;
+}
+
+.neo-btn-dark:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px 0px #000000 !important;
+}
+
